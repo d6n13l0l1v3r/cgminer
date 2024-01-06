@@ -399,6 +399,19 @@ if test "x$gekko" = xyes; then
 fi
 AM_CONDITIONAL([HAS_GEKKO], [test x$gekko = xyes])
 
+bitaxe="no"
+
+AC_ARG_ENABLE([bitaxe],
+	[AC_HELP_STRING([--enable-bitaxe],[Compile support for Bitaxe (default disabled)])],
+	[bitaxe=$enableval]
+	)
+if test "x$bitaxe" = xyes; then
+	AC_DEFINE([USE_BITAXE], [1], [Defined to 1 if Bitaxe support is wanted])
+	AC_DEFINE([USE_VMASK], [1], [Defined to 1 if version mask rolling is wanted])
+	drivercount=x$drivercount
+fi
+AM_CONDITIONAL([HAS_BITAXE], [test x$bitaxe = xyes])
+
 cointerra="no"
 
 AC_ARG_ENABLE([cointerra],
@@ -598,7 +611,7 @@ fi
 
 
 #Add a new device to this list if it needs libusb, along with a no on the end.
-if test x$avalon$avalon2$avalon4$avalon7$avalon8$avalon_miner$bitforce$bitfury$blockerupter$gekko$modminer$bflsc$icarus$hashfast$hashratio$klondike$drillbit$cointerra$ants1$ants3 != xnononononononononononononononononononono; then
+if test x$avalon$avalon2$avalon4$avalon7$avalon8$avalon_miner$bitforce$bitfury$blockerupter$gekko$bitaxe$modminer$bflsc$icarus$hashfast$hashratio$klondike$drillbit$cointerra$ants1$ants3 != xnonononononononononononononononononononono; then
 	want_usbutils=true
 else
 	want_usbutils=false
@@ -610,7 +623,7 @@ else
 	want_libbitfury=false
 fi
 
-if test x$avalon2$avalon4$avalon7$avalon8$avalon_miner$gekko$hashratio != xnonononononono; then
+if test x$avalon2$avalon4$avalon7$avalon8$avalon_miner$gekko$bitaxe$hashratio != xnononononononono; then
 	want_crc16=true
 else
 	want_crc16=false
@@ -927,6 +940,12 @@ else
 	echo "  GekkoScience.ASICs...: Disabled"
 fi
 
+if test "x$bitaxe" = xyes; then
+	echo "  Bitaxe.ASICs.........: Enabled"
+else
+	echo "  Bitaxe.ASICs.........: Disabled"
+fi
+
 if test "x$cointerra" = xyes; then
 	echo "  Cointerra.ASICs......: Enabled"
 else
@@ -1001,7 +1020,7 @@ else
 fi
 
 #Add any new device to this, along with a no on the end of the test
-if test "x$avalon$avalon2$avalon4$avalon7$avalon8$avalon_miner$bab$bflsc$bitforce$bitfury$bitfury16$bitmain_soc$blockerupter$gekko$hashfast$hashratio$icarus$klondike$knc$modminer$drillbit$minion$cointerra$bitmine_A1$ants1$ants2$ants3$sp10$sp30$dragonmint_t1" = xnonononononononononononononononononononononononononononono; then
+if test "x$avalon$avalon2$avalon4$avalon7$avalon8$avalon_miner$bab$bflsc$bitforce$bitfury$bitfury16$bitmain_soc$blockerupter$gekko$bitaxe$hashfast$hashratio$icarus$klondike$knc$modminer$drillbit$minion$cointerra$bitmine_A1$ants1$ants2$ants3$sp10$sp30$dragonmint_t1" = xnononononononononononononononononononononononononononononono; then
 	echo
 	AC_MSG_ERROR([No mining devices configured in])
 	echo

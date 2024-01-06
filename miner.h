@@ -274,6 +274,7 @@ static inline int fsync (int fd)
 	DRIVER_ADD_COMMAND(blockerupter) \
 	DRIVER_ADD_COMMAND(cointerra) \
 	DRIVER_ADD_COMMAND(gekko) \
+	DRIVER_ADD_COMMAND(bitaxe) \
 	DRIVER_ADD_COMMAND(dragonmintT1) \
 	DRIVER_ADD_COMMAND(hashfast) \
 	DRIVER_ADD_COMMAND(drillbit) \
@@ -1056,6 +1057,34 @@ extern char *opt_avalon_options;
 extern char *opt_bitburner_fury_options;
 #endif
 #ifdef USE_GEKKO
+extern char *opt_gekko_serial;
+extern bool opt_gekko_noboost;
+extern bool opt_gekko_lowboost;
+extern bool opt_gekko_gsc_detect;
+extern bool opt_gekko_gsd_detect;
+extern bool opt_gekko_gse_detect;
+extern bool opt_gekko_gsh_detect;
+extern bool opt_gekko_gsi_detect;
+extern bool opt_gekko_gsf_detect;
+extern bool opt_gekko_r909_detect;
+extern float opt_gekko_gsc_freq;
+extern float opt_gekko_gsd_freq;
+extern float opt_gekko_gse_freq;
+extern float opt_gekko_tune_down;
+extern float opt_gekko_tune_up;
+extern float opt_gekko_wait_factor;
+extern float opt_gekko_step_freq;
+extern int opt_gekko_bauddiv;
+extern int opt_gekko_gsh_freq;
+extern int opt_gekko_gsi_freq;
+extern int opt_gekko_gsf_freq;
+extern int opt_gekko_r909_freq;
+extern int opt_gekko_gsh_vcore;
+extern int opt_gekko_start_freq;
+extern int opt_gekko_step_delay;
+extern int opt_gekko_tune2;
+#endif
+#ifdef USE_BITAXE
 extern char *opt_gekko_serial;
 extern bool opt_gekko_noboost;
 extern bool opt_gekko_lowboost;
